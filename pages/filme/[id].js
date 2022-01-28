@@ -1,13 +1,13 @@
 
 export default function FilmeSelecionado({ json }) {
-    const { info } = json
+    const { result } = json
 
     return (
         <>
             <div style={{ padding: "20px" }}>
-                <img src={`https://image.tmdb.org/t/p/original${json.info.backdrop_path}`} width={"900px"} style={{ borderRadius: "30px" }} />
-                <h1>{info.title} ({info.original_title})</h1>
-                <h3 style={{ maxWidth: "800px" }}>{info.overview}</h3>
+                <img src={`https://image.tmdb.org/t/p/original${result.backdrop_path}`} width={"900px"} style={{ borderRadius: "30px" }} />
+                <h1>{result.title} ({result.original_title})</h1>
+                <h3 style={{ maxWidth: "800px" }}>{result.overview}</h3>
             </div>
         </>
     )

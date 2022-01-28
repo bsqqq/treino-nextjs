@@ -1,5 +1,6 @@
 import styles from '../styles/Home.module.css'
 
+// componente teste
 export default function Contato() {
     return (
         <>

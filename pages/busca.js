@@ -3,20 +3,26 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import { useState } from 'react'
 
+// componente next para buscar os filmes da API, este componente usa CSR (Client-Side-Rendering)
 export default function Busca() {
+    // os states aqui servem para settar um estado(palavra) para a palavra-chave de busca (searchText, inicialmente como: '')
+    // E o outro state para poder controlar os resultados que chegam depois da requisiçao que é settado em resultFromSearch
     const [searchText, setSearchText] = useState('')
     const [resultsFromSearch, setResultsFromSearch] = useState([])
 
+    // esta funçao serve para fazer a busca dos filmes dado um termo no input digitado, é assincrona pois precisa fazer a consulta na API
     const handleSearch = async () => {
         if (searchText != false) {
-            const busca = await fetch(`http://localhost:3000/api/search?q=${searchText}`)
-            const { results } = await busca.json()
-            // console.log(results)
-            setResultsFromSearch(results)
-            document.getElementById('input').value = ''
+            // se searchText for diferente de qualquer valor falsy
+            const busca = await fetch(`http://localhost:3000/api/search?q=${searchText}`) //vai buscar os filmes que tem aquela palavra-chave no input
+            const { results } = await busca.json() // depois da busca, passar pra JSON
+            console.log(results) // console.log() só para garantir
+            setResultsFromSearch(results) // se saiu como esperado, usar a funcao do state com o valor de results
+            document.getElementById('input').value = '' // depois limpar o input
         }
     }
 
+    // puro jsx abaixo
     return (
         <div className={styles.container}>
             <Head>
@@ -36,15 +42,18 @@ export default function Busca() {
                 Termo de busca: {searchText}
                 <button onClick={handleSearch}>Buscar filme</button>
                 <hr />
+                {/* se os resultados da pesquisa voltar algum valor truly, irá dar display na lista... */}
                 {resultsFromSearch &&
                     <div>
                         <ul style={{ listStyle: "none", margin: 0 }}>
                             {resultsFromSearch.map((item, index) => (
                                 <li key={index} style={{ display: "inline-block", margin: "20px" }}>
-                                    <a href={`/filmes/${item.id}`}>
-                                        <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} style={{ width: '200px' }} />
-                                        <p style={{ maxWidth: "190px" }}>{item.title}</p>
-                                    </a>
+                                    <Link href={`/filme/${item.id}`}>
+                                        <div>
+                                            <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} style={{ width: '200px' }} />
+                                            <p style={{ maxWidth: "190px" }}>{item.title}</p>
+                                        </div>
+                                    </Link>
                                 </li>
                             )
                             )}
