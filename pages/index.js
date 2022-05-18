@@ -23,13 +23,13 @@ export default function Home({ results, name }) {
         <Link href={"/busca"}>Ir para a busca</Link>
 
         {/* Lista nao ordenada dos filmes buscados da API, pelo getServerSideProps() {em const {filmes} = ...} */}
-        <ul style={{ listStyle: "none", margin: '0px' }}>
+        <ul style={{ listStyle: "none", display: 'flex', flexWrap: 'wrap', justifyContent: 'center', paddingRight: '40px'}}>
 
           {/* após buscar os filmes e pegar em props.results, faço um map() {pois é um array} 
           passando os parametros 'filme' e 'index' (auto-explicativos) */}
 
           {results.map((filme, index) => (
-            <li key={index} style={{ display: "inline-block", margin: "20px" }}>
+            <li key={index} style={{ margin: "20px" }}>
 
               {/* cada elemento dentro do array results é um objeto de filme (dito pela API) com alguns atributos 
               como id, title e poster_path, etc...*/}
@@ -38,7 +38,7 @@ export default function Home({ results, name }) {
               <Link href={`/filme/${filme.id}`}>
                 <div>
                   {/* Aqui se faz a imagem do poster do filme juntamente com seu titulo */}
-                  <img src={`https://image.tmdb.org/t/p/original${filme.poster_path}`} style={{ width: '230px' }} />
+                  <img src={`https://image.tmdb.org/t/p/original${filme.poster_path}`} style={{ width: '230px', cursor: 'pointer' }} />
                   <p style={{ margin: 0, maxWidth: "240px" }}>{filme.title}</p>
                 </div>
               </Link>

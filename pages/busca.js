@@ -21,8 +21,7 @@ export default function Busca() {
             document.getElementById('input').value = '' // depois limpar o input
         }
     }
-
-    // puro jsx abaixo
+    
     return (
         <div className={styles.container}>
             <Head>
@@ -36,21 +35,20 @@ export default function Busca() {
                     Busca
                 </h1>
 
-                <Link href={"/"}>Ir para o menu principal</Link>
 
                 <input type="search" id='input' onChange={e => setSearchText(e.target.value)} />
                 Termo de busca: {searchText}
                 <button onClick={handleSearch}>Buscar filme</button>
-                <hr />
+                <Link href={"/"}>Ir para o menu principal</Link>
                 {/* se os resultados da pesquisa voltar algum valor truly, irá dar display na lista... */}
                 {resultsFromSearch &&
                     <div>
-                        <ul style={{ listStyle: "none", margin: 0 }}>
+                        <ul style={{ listStyle: "none", margin: 0, display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
                             {resultsFromSearch.map((item, index) => (
-                                <li key={index} style={{ display: "inline-block", margin: "20px" }}>
+                                <li key={index} style={{ margin: "20px" }}>
                                     <Link href={`/filme/${item.id}`}>
                                         <div>
-                                            <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} style={{ width: '200px' }} />
+                                            <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} style={{ width: '16rem' }} />
                                             <p style={{ maxWidth: "190px" }}>{item.title}</p>
                                         </div>
                                     </Link>

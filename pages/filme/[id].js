@@ -17,7 +17,7 @@ export default function FilmeSelecionado({ json }) {
 export async function getServerSideProps(context) {
     const filme = await fetch(`http://localhost:3000/api/filmeEspecificado/${context.params.id}`)
     const json = await filme.json()
-    console.log("json", json)
+    // console.log("json", json)
     return {
         props: {
             json
