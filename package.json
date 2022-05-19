@@ -1,6 +1,7 @@
 {
   "name": "cinemanext",
-  "private": true,
+  "private": false,
+  "main": "./pages/index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
