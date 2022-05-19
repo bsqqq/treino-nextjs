@@ -3,8 +3,9 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 
 // componente next Principal (home)
-export default function Home({ results, name }) {
+export default function Home({ results, status }) {
   // essa props sao buscadas do retorno da funçao abaixo do componente (getServerSideProps()), e estas props sao frutos do SSR
+  console.log(status)
   return (
     <div className={styles.container}>
       <Head>
@@ -55,16 +56,17 @@ export default function Home({ results, name }) {
 export async function getServerSideProps() {
   // funçao que vai fazer a busca dos filmes (e meu nome) em SSR (server-side-rendering)
   const filmes = await fetch('http://localhost:3000/api/trending')
-  const pegarNome = await fetch('http://localhost:3000/api/hello')
+  //const pegarNome = await fetch('http://localhost:3000/api/hello')
+  const status = filmes.ok ? false : res.statusCode
   // depois de pegar as informaçoes, é necessário passar no formato de JSON.
   const { results } = await filmes.json()
-  const { name } = await pegarNome.json()
+  //const { name } = await pegarNome.json()
   // quanto a funçao buscar as coisas e retornar os resultados, vai ser dentro de um objeto com o atributo props,
   // onde vai ficar localizado os filmes e meu nome
   return {
     props: {
       results,
-      name
+      status
     }
   }
 }
