@@ -5,7 +5,7 @@ import Link from 'next/link'
 // componente next Principal (home)
 export default function Home({ results, status }) {
   // essa props sao buscadas do retorno da funçao abaixo do componente (getServerSideProps()), e estas props sao frutos do SSR
-  console.log(status)
+  console.log('status ---> ', status)
   return (
     <div className={styles.container}>
       <Head>
