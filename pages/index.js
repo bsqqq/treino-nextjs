@@ -27,7 +27,7 @@ export default function Home({ results }) {
           {/* após buscar os filmes e pegar em props.results, faço um map() {pois é um array} 
           passando os parametros 'filme' e 'index' (auto-explicativos) */}
 
-          {/* {results.map((filme, index) => (
+          {results.map((filme, index) => (
             <li key={index} style={{ margin: "20px" }}>
               <Link href={`/filme/${filme.id}`}>
                 <div>
@@ -37,7 +37,7 @@ export default function Home({ results }) {
               </Link>
 
             </li>
-          ))} */}
+          ))}
         </ul>
       </main>
 
@@ -45,16 +45,16 @@ export default function Home({ results }) {
   )
 }
 
-// export async function getStaticProps() {
+export async function getStaticProps() {
   // funçao que vai fazer a busca dos filmes (e meu nome) em SSR (server-side-rendering)
-  // const filmes = await fetch('http://localhost:3000/api/trending')
-  // const { results } = await filmes.json()
+  const filmes = await fetch('http://localhost:3000/api/trending')
+  const { results } = await filmes.json()
   // depois de pegar as informaçoes, é necessário passar no formato de JSON.
   // quanto a funçao buscar as coisas e retornar os resultados, vai ser dentro de um objeto com o atributo props,
   // onde vai ficar localizado os filmes e meu nome
-  // return {
-    // props: {
-      // results
-    // }
-  // }
-// }
+  return {
+    props: {
+      results
+    }
+  }
+}
