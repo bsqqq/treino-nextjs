@@ -18,7 +18,6 @@ export default function Home({ results, status }) {
         <h1 className={styles.title}>
           Filmes em destaque
         </h1>
-        <p>Meu nome é {name}</p>
 
         {/* Componente <Link> para redirecionar para a rota do atributo do href */}
         <Link href={"/busca"}>Ir para a busca</Link>
