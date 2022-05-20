@@ -52,7 +52,7 @@ export default function Home({ results, status }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   // funçao que vai fazer a busca dos filmes (e meu nome) em SSR (server-side-rendering)
   const filmes = await fetch('http://localhost:3000/api/trending')
   //const pegarNome = await fetch('http://localhost:3000/api/hello')
