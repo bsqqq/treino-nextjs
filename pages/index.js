@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import { api_base, api_key } from '../../../lib/tmdb'
+import { api_base, api_key } from '../lib/tmdb'
 
 
 // componente next Principal (home)

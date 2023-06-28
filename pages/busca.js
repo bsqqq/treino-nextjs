@@ -2,7 +2,7 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { useState } from "react";
-import { api_base, api_key } from '../../lib/tmdb'
+import { api_base, api_key } from '../lib/tmdb'
 
 
 // componente next para buscar os filmes da API, este componente usa CSR (Client-Side-Rendering)
