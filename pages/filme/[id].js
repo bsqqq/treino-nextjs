@@ -1,20 +1,19 @@
 import { api_base, api_key } from "../../lib/tmdb";
 
 export default function FilmeSelecionado({ json }) {
-  const { result } = json;
 
   return (
     <>
       <div style={{ padding: "20px" }}>
         <img
-          src={`https://image.tmdb.org/t/p/original${result.backdrop_path}`}
+          src={`https://image.tmdb.org/t/p/original${json.backdrop_path}`}
           width={"900px"}
           style={{ borderRadius: "30px" }}
         />
         <h1>
-          {result.title} ({result.original_title})
+          {json.title} ({json.original_title})
         </h1>
-        <h3 style={{ maxWidth: "800px" }}>{result.overview}</h3>
+        <h3 style={{ maxWidth: "800px" }}>{json.overview}</h3>
       </div>
     </>
   );
