@@ -23,3 +23,8 @@
 .inputs > button {
   margin-left: 10px;
 }
+
+.title {
+  text-align: center;
+  width: 75%;
+}
