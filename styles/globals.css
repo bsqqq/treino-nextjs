@@ -20,9 +20,11 @@ a {
 @media (max-width: 600px) {
   .title {
     font-size: xxx-large;
+    font-weight: bolder;
   }
   .subtitle {
-      font-size: xx-large;
+      font-size: 2.5rem;
+      font-weight: 500;
   }
 
   #bg-item > img {
